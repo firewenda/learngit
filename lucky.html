@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>谁来review</title>
+<style>
+/*css reset*/
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; font:12px/1.5 tahoma, arial, 宋体;}
+fieldset, img {border:0; display:block;}
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal; }
+ol, ul { list-style:none; }
+input, button, textarea, select { font-family:inherit; font-size:inherit; font-weight:inherit; }
+input, button, textarea, select { *font-size:100%;}
+select, input, button, textarea { font:100% Tahoma, Helvetica, Arial, sans-serif; }
+caption, th { text-align:left; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:normal; }
+q:before, q:after { content:""; }
+abbr, acronym { border:0; }
+a{ text-decoration:none;}
+
+.wrap{ width:500px; margin:50px auto; font-family:"微软雅黑"; position: relative;}
+.show{ width:300px; height:300px; background-color:#ff3300; text-align:center; color:#fff; font-size:28px; -moz-border-radius:150px; -webkit-border-radius:150px; border-radius:150px; background-image: -webkit-gradient(linear,0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5,#fb6c00)); -moz-box-shadow:2px 2px 10px #BBBBBB; -webkit-box-shadow:2px 2px 10px #BBBBBB; box-shadow:2px 2px 10px #BBBBBB; position: absolute; left: 100px; top: 100px;}
+.show p{ width: 300px; height: 30px; line-height: 30px; position: absolute; top: 50%; margin-top: -15px;}
+.btn{width: 100%; position: absolute; top: 560px;}
+.btn a{ display:block; width:120px; height:50px; margin:0 auto; text-align:center; line-height:50px; -moz-border-radius:25px; -webkit-border-radius:25px; border-radius:25px;}
+.btn a:link,.btn a:visited,.btn a:hover{ color:#fff; text-decoration:none;}
+.btn a.start{ background:#80b600;}
+.btn a.start:hover{ background:#75a700;}
+.btn a.stop{ background:#00a2ff;}
+.btn a.stop:hover{ background:#008bdb;}
+.wrap .user{ display: block; position: absolute; top: 200px; left: 200px; width: 100px; height: 100px; -moz-border-radius:100%; -webkit-border-radius:100%; border-radius:100%; background-image: -webkit-gradient(linear,0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5,#fb6c00)); text-align: center; color: #fff; line-height: 100px;}
+</style>
+<script src="http://g.tbcdn.cn/kissy/k/1.4.2/seed-min.js" ></script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="btn"><a id="btn" class="start" href="javascript:void(0)">开始</a></div>
+  <div class="user">文达001</div>
+  <div class="user">文休1665</div>
+  <div class="user">元瑾04</div>
+  <div class="user">才馨12</div>
+  <div class="user">小玉_博彦</div>
+  <div class="user">文谦001</div>
+  <div class="user">绿茶9227</div>
+  <div class="user">伯仁08</div>
+  <div class="user">黄阿雅00</div>
+  <div class="user">陈攀松_博彦</div>
+  <div class="user">小马g2011</div>
+  <div class="user">种晓倩</div>
+  <div class="user">王知雨</div>
+  <div class="user">杨晟</div>
+  <div class="user">张宇朋</div>
+</div>
+
+<script>
+KISSY.use('node, anim', function(S, Node, Anim){
+  var user = S.all('.user'),
+    btn = S.all('.btn'),
+    user_active = S.all(),
+    circle = 250,
+    user_circle = 50,
+    len = user.length,
+    rad = 2*Math.PI/user.length;
+
+  function init(I){
+    var i = I || 0;
+    if(i >= len){
+      user.animate({
+        opacity: 0.5
+      }, {
+        duraction: .2
+      });
+      return false;
+    }
+    user.item(i).animate({
+      left: circle*(1+Math.sin(i*rad)) - user_circle,
+      top: circle*(1-Math.cos(i*rad)) - user_circle
+    },{
+      duration: .2,
+      complete: function(){
+        init(++i);
+      }
+    });
+  }
+
+  var activeIndex = 0,
+    targetIndex = 0;
+  function next(){
+    if(targetIndex === 0){
+      end();
+      return false;
+    }
+    user.item(activeIndex).animate({opacity: .5},{
+      duration: .1
+    });
+    if(++activeIndex >= len){
+      activeIndex = 0;
+    }
+    user.item(activeIndex).animate({opacity: 1}, {
+      duration: .1,
+      complete: next
+    });
+    targetIndex --;
+  }
+
+  function end(){
+    var target = user.item(activeIndex);
+    user_active = user_active.add(target);
+    user = user.slice(0, activeIndex).add(user.slice(activeIndex+1));
+    len = user.length;
+    
+    user_active.each(function(target, i){
+      target.animate({
+        left: circle - user_circle  - 2*user_circle*((user_active.length-1)/2 - i),
+        top: circle - user_circle
+      },{
+        duration: .2
+      }); 
+    })
+  }
+  function start(){
+    targetIndex = len*(Math.floor(Math.random()*2)+1) + Math.floor(Math.random()*len);
+    activeIndex = 0;
+    user.item(activeIndex).css({opacity: 1});
+    next();
+  }
+
+  btn.on('click', function(){
+    start();
+  })
+  init();
+})
+</script>
+</body>
+</html>
