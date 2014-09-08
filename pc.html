@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="http://g.tbcdn.cn/??mui/global/1.2.38/global.css"/>
+<script src="http://g.tbcdn.cn/??kissy/k/1.4.1/seed-min.js,mui/seed/1.4.0/seed.js,mui/seed-g/1.0.48/seed.js,mui/btscfg-g/1.1.0/index.js,mui/bucket/1.2.1/index.js,mui/globalmodule/1.3.33/global-module.js,mui/global/1.2.38/global.js"></script>
+<style>
+.c-page{ width: 100%; position: relative; overflow: hidden; font: 12px 'Microsoft Yahei'; background: #fff;}
+.c-page img{ display: block; border: 0;}
+.c-page a{ text-decoration: none;}
+.c-head{ width: 100%; background: url("images/bg.png") top center no-repeat;}
+.c-head .head-cnt{ width: 990px; margin: 0 auto;}
+.c-head .head-slide{ width: 990px; height: 220px; background: url("images/head2.png") no-repeat; position: relative; overflow: hidden;}
+.c-head .head-slide .head-pre{ width: 50px; height: 50px; float: left; background: url("images/pre1.png") no-repeat; margin-top: 52px; margin-right: 30px;}
+.c-head .head-slide .head-next{ width: 50px; height: 50px; float: right;  background: url("images/next1.png") no-repeat; margin-top: 52px;}
+.c-head .head-slide .head-main{ width: 830px; height: 185px; overflow: hidden; float: left; margin-top: 15px; position: relative;}
+.c-head .head-pannel{}
+.c-head .head-pannel{ float: left; line-height: 24px;}
+.c-head .head-pannel a{ display: block; width: 120px; margin: 0 auto;}
+.c-head .head-pannel img{ width: 120px; height: 120px; margin-bottom: 20px;}
+.c-head .head-pannel span{ display: block; width: 120px; text-align: center; color: #fff; border-bottom: 1px dotted #fff;}
+.c-head .head-pannel em{ display: block; font-size: 16px; color: #fff; text-align: center;}
+.c-head .head-slide .head-nav{ display: none;}
+
+.c-rec{ width: 990px; margin: 0 auto;}
+.c-rec .rec-title{ width: 990px; height: 36px; margin: 30px 0 10px; background: url("images/title.png") left center no-repeat; position: relative;}
+.c-rec .rec-title .rec-history{ width: 230px; height: 28px; float: left; background: #f1f1f1; position: relative; overflow: hidden; z-index: 9; position: absolute; top: 0; left: 164px;}
+.c-rec .rec-title .rec-history ul{ overflow: hidden;}
+.c-rec .rec-title .rec-history ul li{ width: 230px; height: 28px; line-height: 28px; float: left;}
+.c-rec .rec-title .rec-history ul li a{ display: block; color: #666; font-size: 16px; padding-left: 10px;}
+.c-rec .rec-title .rec-history .rec-more{ display: block; width: 28px; height: 28px; background: url("images/iconb.png") no-repeat; position: absolute; top: 0; right: 0; cursor: pointer;}
+.c-rec .rec-title .rec-history .rec-more-top{ background: url("images/icont.png") no-repeat;}
+.c-rec .rec-cnt{ width: 990px; height: 520px; position: relative;}
+.c-rec .rec-cnt .fix-nav{ width: 102px; position: absolute; top: 45px; right: 16px;}
+.c-rec .rec-cnt .fix-nav li{ width: 102px; height: 101px; margin-bottom: 10px;}
+.c-rec .rec-cnt .fix-nav li a{ display: block; width: 102px; height: 101px; background: url("images/nav1.png") no-repeat;}
+.c-rec .rec-cnt .fix-nav li .nav2{ background: url("images/nav2.png") no-repeat;}
+.c-rec .rec-cnt .fix-nav li .nav3{ background: url("images/nav3.png") no-repeat;}
+
+.c-parameters{ width: 990px; height: 743px; margin: 0 auto; background: url("images/c-parameters.jpg") no-repeat; overflow: hidden;}
+.c-parameters ul{ margin-left: 340px; margin-top: 60px; width: 690px; overflow: hidden;}
+.c-parameters ul li{ width: 120px; float: left; margin-right: 50px; margin-bottom: 34px; *margin-left:expression(this.previousSibling==null?"80px":"0");}
+.c-parameters ul li:first-child{ margin-left: 80px;}
+.c-parameters ul li img{ width: 120px; height: 120px; margin-bottom: 14px;}
+.c-parameters ul li span{ display: block; text-align: center; font-size: 14px; color: #666;}
+.c-parameters ul .all-info{ cursor: pointer;}
+
+.c-test{ width: 990px; height: 815px; margin: 0 auto; position: relative; overflow: hidden; z-index: 2;}
+.c-test .test-tab{ width: 700px; float: left; overflow: hidden;}
+.c-test .test-nav{ width: 700px; height: 56px; background: url("images/tabbg.jpg") no-repeat; border-bottom: 2px solid #333ca0;}
+.c-test .test-nav li{ width: 200px; height: 56px; float: left; margin-right: 10px; background: url("images/tab.png") no-repeat;}
+.c-test .test-nav li a{ display: block; color: #000; font-size: 30px; line-height: 56px; text-align: center;}
+.c-test .test-nav li.selected{ background: url("images/tabh.png") no-repeat;}
+.c-test .test-nav li.selected a{ color: #fff; font-weight: bold;}
+.c-test .test-video{ width: 700px; height: 440px;}
+.c-test .test-open{ width: 700px; overflow: hidden;}
+.c-test .test-open ul{ margin-left: 10px; margin-top: 20px; width: 720px;}
+.c-test .test-open ul li{ width: 210px; height: 140px; float: left; margin: 0 24px 20px 0; cursor: pointer;}
+.c-test .test-open ul li img{ width: 210px; height: 140px;}
+.c-test .pic-word-nav{ width: 700px; height: 54px; border-bottom: 1px solid #d2d2d2;}
+.c-test .pic-word-nav li{ width: 64px; height: 50px; float: left; margin-right: 36px;}
+.c-test .pic-word-nav li a{ display: block; color: #000; font-size: 16px; line-height: 54px; text-align: center;}
+.c-test .pic-word-nav li.selected{ border-bottom: 5px solid #333ca0;}
+.c-test .pic-word-nav li.selected a{ color: #333ca0;}
+.c-test .test-info{ width: 700px; font-size: 14px;}
+.c-test .test-info dt{ color: #666; font-weight: bold; padding: 30px 0;}
+.c-test .test-info dd{ color: #333; line-height: 24px; padding-bottom: 10px;}
+.c-test .test-info dd img{ margin: 0 auto;}
+.c-test .test-info dd span{ display: block; font-size: 16px; color: #333; text-align: center;}
+.c-test .test-weibo{ width: 270px; height: 510px; float: right;}
+
+.c-more{ width: 990px; margin: 0 auto; position: relative; z-index: 1;}
+.c-more .more-title{ width: 990px; height: 118px; border-bottom: 3px solid #333ca0;}
+.c-more .more-title .more-right{ position: absolute; top: -278px; right: 0;}
+.c-more .more-tab{ width: 990px; overflow: hidden;}
+.c-more .more-nav{ height: 57px; margin-bottom: 20px;}
+.c-more .more-nav li{ width: 64px; height: 52px; float: left; margin-right: 30px;}
+.c-more .more-nav li a{ display: block; color: #424242; line-height: 52px; text-align: center; font-size: 16px;}
+.c-more .more-nav li.selected{ border-bottom: 5px solid #333ca0;}
+.c-more .more-nav li.selected a{ color: #333ca0;}
+.c-more .more-pannel ul{}
+.c-more .more-pannel ul li{ float: left; width: 160px; margin-right: 36px; padding-bottom: 30px;}
+.c-more .more-pannel ul li img{ width: 160px; height: 160px; margin-bottom: 10px;}
+.c-more .more-pannel ul li em{ display: block; font-size: 18px; font-weight: bold; color: #000; text-align: center; margin-bottom: 16px;}
+.c-more .more-pannel ul li p{ height: 32px; overflow: hidden; color: #333; text-align: center;}
+.c-more .more-pannel ul li p span{ display: block;}
+
+.c-show{ z-index:100; position: fixed; top: 50%; left: 50%; display:none;}
+.show-title{ height: 35px; line-height: 36px; color: #fff; font-size: 14px; font-weight: bold; position:relative; z-index:1; background:#b6000c; border-bottom: 1px solid #8c0400; padding-left: 25px;}
+.show-title .c-close{ display: block; width: 16px; height: 16px; background: url("images/close.png") no-repeat; position: absolute; top: 9px; right: 9px; cursor: pointer;}
+.c-show-par{ width: 700px; height: 520px; background: #fff; overflow: hidden; margin: -280px 0 0 -350px; padding-bottom: 40px;}
+.c-show-par .par-info{ width: 690px; height: 480px; overflow-y: auto;}
+.c-show-par .par-info .info-list{ padding: 36px 0; border-bottom: 1px solid #e2e2e2; overflow: hidden;}
+.c-show-par .par-info .info-title{ display: inline-block; width: 140px; float: left; font-size: 18px; color: #666; font-weight: bold; text-align: center;}
+.c-show-par .par-info .info-cnt{ width: 520px; float: right;}
+.c-show-par .par-info .info-cnt p{ font-size: 14px; color: #666; line-height: 24px;}
+.c-show-pic{ width: 845px; height: 520px; overflow: hidden; background: #333; padding-bottom: 40px; margin: -280px 0 0 -424px;}
+.c-show-pic .pic-slide{ width: 690px; height: 460px; margin: 30px auto 0; position: relative;}
+.c-show-pic .pic-slide .pic-pre{ width: 50px; height: 50px; position: absolute; top: 187px; left: -25px; background: url("images/pre1.png") no-repeat; z-index: 5;}
+.c-show-pic .pic-slide .pic-next{ width: 50px; height: 50px;  position: absolute; top: 187px; right: -25px;  background: url("images/next1.png") no-repeat; z-index: 5;}
+.c-show-pic .pic-slide .pic-nav{ display: none;}
+.c-show-pic .pic-slide .pic-main{ width: 690px; height: 460px; overflow: hidden; position: relative;}
+.c-show-pic .pic-slide .pic-main .pic-pannel{ height: 460px;}
+.c-show-pic .pic-slide .pic-main img{ width: 690px; height: 460px; background: #ff4d4d;}
+.c-popup{ width:100%; height:100%; background-color:#000; z-index:99; filter:alpha(opacity=70); opacity:0.7; position:fixed; top:0; left:0; display:none;}
+</style>
+</head>
+<body>
+<div class="c-page">
+
+	<div class="c-head">
+		<div class="head-cnt">
+			<img src="images/head1.png" alt="">
+			<div class="head-slide">
+				<div class="head-pre"></div>
+				<div class="head-main">
+					<div class="head-pannel"><a href="#"><img src="" alt=""><span>荣耀holy4移动4G版</span><em>8/23发布</em></a></div>
+					<div class="head-pannel"><a href="#"><img src="" alt=""><span>荣耀holy4移动4G版</span><em>8/23发布</em></a></div>
+					<div class="head-pannel"><a href="#"><img src="" alt=""><span>荣耀holy4移动4G版</span><em>8/23发布</em></a></div>
+					<div class="head-pannel"><a href="#"><img src="" alt=""><span>荣耀holy4移动4G版</span><em>8/23发布</em></a></div>
+					<div class="head-pannel"><a href="#"><img src="" alt=""><span>荣耀holy4移动4G版</span><em>8/23发布</em></a></div>
+				</div>
+				<div class="head-next"></div>
+				<ul class="head-nav"></ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="c-rec">
+		<h4 class="rec-title">
+			<div class="rec-history">
+				<ul>
+					<li><a href="#">第15期 小米4首发</a></li>
+					<li><a href="#">第14期 小米4首发</a></li>
+					<li><a href="#">第13期 小米4首发</a></li>
+					<li><a href="#">第12期 小米4首发</a></li>
+					<li><a href="#">第11期 小米4首发</a></li>
+				</ul>
+				<span class="rec-more"></span>
+			</div>
+		</h4>
+		<div class="rec-cnt">
+			<img src="images/pic.jpg">
+			<ul class="fix-nav">
+				<li><a class="nav1" href="#"></a></li>
+				<li><a class="nav2" href="#"></a></li>
+				<li><a class="nav3" href="#"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="c-parameters">
+		<ul>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li><img src=""><span>主屏分辨率</span></li>
+			<li class="all-info"><img src="images/icon7.png"><span>详细参数&gt;</span></li>
+		</ul>
+	</div>
+
+	<div class="c-test">
+		<div class="test-tab">
+			<ul class="test-nav">
+				<li class="selected"><a href="#">图文评测</a></li>
+				<li><a href="#">视频评测</a></li>
+				<li><a href="#">开箱图</a></li>
+			</ul>
+			<div class="test-cnt">
+				<div class="test-pannel pic-word">
+					<ul class="pic-word-nav">
+						<li class="selected"><a href="#">外观评测</a></li>
+						<li><a href="#">相机性能</a></li>
+						<li><a href="#">屏幕性能</a></li>
+						<li><a href="#">续航时间</a></li>
+						<li><a href="#">手机温度</a></li>
+					</ul>
+					<div class="pic-word-cnt">
+						<div class="pic-word-pannel">
+							<dl class="test-info">
+								<dt>一名骄傲的工匠 与一名碉堡的铁匠1</dt>
+								<dd>2014年7月22日14时，小米在北京国家会议中心举行2014小米年度发布会，本次发布会上小米共有多款新品发布，不过最为引人关注的还是小米的全新一代机型——小米手机4，事实上在发布会之前，小米也不免俗的通过邀请函玩起了小神秘，这一块奥氏体304不锈钢钢板也着实让我们对于小米手机4的机身材料有了更多期待，中关村在线手机事业部目前已经收到这款机型，现在就让我们来一睹小米手机4的风采吧。</dd>
+								<dd><img src="images/more-t.png"><span>事实上，小米虽然在关注度上一直没有输给其他竞争</span></dd>
+							</dl>
+						</div>
+						<div class="pic-word-pannel">
+							<dl class="test-info">
+								<dt>一名骄傲的工匠 与一名碉堡的铁匠2</dt>
+								<dd>2014年7月22日14时，小米在北京国家会议中心举行2014小米年度发布会，本次发布会上小米共有多款新品发布，不过最为引人关注的还是小米的全新一代机型——小米手机4，事实上在发布会之前，小米也不免俗的通过邀请函玩起了小神秘，这一块奥氏体304不锈钢钢板也着实让我们对于小米手机4的机身材料有了更多期待，中关村在线手机事业部目前已经收到这款机型，现在就让我们来一睹小米手机4的风采吧。</dd>
+								<dd><img src="images/more-t.png"><span>事实上，小米虽然在关注度上一直没有输给其他竞争</span></dd>
+							</dl>
+						</div>
+						<div class="pic-word-pannel">
+							<dl class="test-info">
+								<dt>一名骄傲的工匠 与一名碉堡的铁匠3</dt>
+								<dd>2014年7月22日14时，小米在北京国家会议中心举行2014小米年度发布会，本次发布会上小米共有多款新品发布，不过最为引人关注的还是小米的全新一代机型——小米手机4，事实上在发布会之前，小米也不免俗的通过邀请函玩起了小神秘，这一块奥氏体304不锈钢钢板也着实让我们对于小米手机4的机身材料有了更多期待，中关村在线手机事业部目前已经收到这款机型，现在就让我们来一睹小米手机4的风采吧。</dd>
+								<dd><img src="images/more-t.png"><span>事实上，小米虽然在关注度上一直没有输给其他竞争</span></dd>
+							</dl>
+						</div>
+						<div class="pic-word-pannel">
+							<dl class="test-info">
+								<dt>一名骄傲的工匠 与一名碉堡的铁匠4</dt>
+								<dd>2014年7月22日14时，小米在北京国家会议中心举行2014小米年度发布会，本次发布会上小米共有多款新品发布，不过最为引人关注的还是小米的全新一代机型——小米手机4，事实上在发布会之前，小米也不免俗的通过邀请函玩起了小神秘，这一块奥氏体304不锈钢钢板也着实让我们对于小米手机4的机身材料有了更多期待，中关村在线手机事业部目前已经收到这款机型，现在就让我们来一睹小米手机4的风采吧。</dd>
+								<dd><img src="images/more-t.png"><span>事实上，小米虽然在关注度上一直没有输给其他竞争</span></dd>
+							</dl>
+						</div>
+						<div class="pic-word-pannel">
+							<dl class="test-info">
+								<dt>一名骄傲的工匠 与一名碉堡的铁匠5</dt>
+								<dd>2014年7月22日14时，小米在北京国家会议中心举行2014小米年度发布会，本次发布会上小米共有多款新品发布，不过最为引人关注的还是小米的全新一代机型——小米手机4，事实上在发布会之前，小米也不免俗的通过邀请函玩起了小神秘，这一块奥氏体304不锈钢钢板也着实让我们对于小米手机4的机身材料有了更多期待，中关村在线手机事业部目前已经收到这款机型，现在就让我们来一睹小米手机4的风采吧。</dd>
+								<dd><img src="images/more-t.png"><span>事实上，小米虽然在关注度上一直没有输给其他竞争</span></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="test-pannel">
+					<div class="test-video">
+		                <embed src="http://player.youku.com/player.php/sid/XNzUxNDE2MjI0/v.swf" allowFullScreen="true" quality="high" width="700" height="440" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		            </div>
+				</div>
+				<div class="test-pannel">
+					<div class="test-open">
+						<ul>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+							<li><img src="" alt=""></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="test-weibo">
+			<img src="images/weibo.png">
+			<iframe width="270" height="450"  frameborder="0" scrolling="no" src="http://widget.weibo.com/livestream/listlive.php?language=zh_cn&width=270&height=450&uid=1866618310&skin=5&refer=1&appkey=&pic=0&titlebar=0&border=0&publish=1&atalk=1&recomm=0&at=0&colordiy=0&dpc=1"></iframe>
+		</div>
+	</div>
+
+	<div class="c-more">
+		<h4 class="more-title"><img src="images/more-t.png" alt=""><img class="more-right" src="images/more-p.png" alt=""></h4>
+		<div class="more-tab">
+			<ul class="more-nav">
+				<li class="selected"><a href="#">全部</a></li>
+				<li><a href="#">三星</a></li>
+			</ul>
+			<div class="more-cnt">
+				<div class="more-pannel">
+					<ul>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+					</ul>
+				</div>
+				<div class="more-pannel">
+					<ul>
+						<li><a href="#"><img src="" alt=""><em>￥1999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+						<li><a href="#"><img src="" alt=""><em>￥3999</em><p><span>HTC DESIRE 816 联通3G</span><span>双卡双待 多彩色</span></p></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="c-show c-show-par">
+		<div class="show-title">详细参数<span class="c-close"></span></div>
+		<div class="par-info">
+			<div class="info-list">
+				<span class="info-title">主摄像头</span>
+				<div class="info-cnt">
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+				</div>
+			</div>
+			<div class="info-list">
+				<span class="info-title">主摄像头</span>
+				<div class="info-cnt">
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+				</div>
+			</div>
+			<div class="info-list">
+				<span class="info-title">主摄像头</span>
+				<div class="info-cnt">
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+					<p>这是一个标题呀</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="c-show c-show-pic">
+		<div class="show-title"><span class="c-close"></span></div>
+		<div class="pic-slide">
+			<div class="pic-pre"></div>
+			<div class="pic-main">
+				<div class="pic-pannel"><img src="" alt="1"></div>
+				<div class="pic-pannel"><img src="" alt="2"></div>
+				<div class="pic-pannel"><img src="" alt="3"></div>
+				<div class="pic-pannel"><img src="" alt="4"></div>
+				<div class="pic-pannel"><img src="" alt="5"></div>
+				<div class="pic-pannel"><img src="" alt="6"></div>
+				<div class="pic-pannel"><img src="" alt="7"></div>
+				<div class="pic-pannel"><img src="" alt="8"></div>
+				<div class="pic-pannel"><img src="" alt="9"></div>
+				<div class="pic-pannel"><img src="" alt="10"></div>
+				<div class="pic-pannel"><img src="" alt="11"></div>
+				<div class="pic-pannel"><img src="" alt="12"></div>
+			</div>
+			<div class="pic-next"></div>
+			<ul class="pic-nav"></ul>
+		</div>
+	</div>
+
+	<div class="c-popup"></div>
+
+</div>
+
+<script>
+KISSY.use('gallery/slide/1.3/',function(S, Slide){
+	var headSlide = new Slide('.head-slide',{
+		eventType:'click',
+		navClass:'head-nav',
+		contentClass:'head-main',
+		pannelClass:'head-pannel',
+		selectedClass:'',
+		effect:'hSlide',
+		carousel:true,
+		colspan:5,
+		touchmove:true,
+		autoSlide:false
+	});
+	S.one('.head-pre').on('click',function(){
+		headSlide.next();
+	});
+	S.one('.head-next').on('click',function(){
+		headSlide.previous();
+	});
+
+	var testSlide = new Slide('.test-tab',{
+		eventType:'click',
+		navClass:'test-nav',
+		contentClass:'test-cnt',
+		pannelClass:'test-pannel',
+		selectedClass:'selected',
+		effect:'none',
+		autoSlide:false
+	});
+
+	var picWordSlide = new Slide('.pic-word',{
+		eventType:'click',
+		navClass:'pic-word-nav',
+		contentClass:'pic-word-cnt',
+		pannelClass:'pic-word-pannel',
+		selectedClass:'selected',
+		effect:'none',
+		autoSlide:false
+	});
+
+	var moreSlide = new Slide('.more-tab',{
+		eventType:'click',
+		navClass:'more-nav',
+		contentClass:'more-cnt',
+		pannelClass:'more-pannel',
+		selectedClass:'selected',
+		effect:'none',
+		autoSlide:false
+	});
+
+	var picSlide = new Slide('.pic-slide',{
+		eventType:'click',
+		navClass:'pic-nav',
+		contentClass:'pic-main',
+		pannelClass:'pic-pannel',
+		selectedClass:'',
+		effect:'hSlide',
+		carousel:false,
+		colspan:1,
+		touchmove:true,
+		autoSlide:false
+	});
+	S.one('.pic-pre').on('click',function(){
+		picSlide.next();
+	});
+	S.one('.pic-next').on('click',function(){
+		picSlide.previous();
+	});
+
+	S.all('.rec-more').on('click',function(e){
+		e.halt();
+		if(S.all(this).hasClass('rec-more-top')){
+			S.all('.rec-more').removeClass('.rec-more-top');
+			S.all('.rec-history').animate({
+				height: {
+			        value: "28px"
+			    }
+			},{
+			    duration: 0.2,
+			    easing: 'easeIn'
+			})
+		}else{
+			S.all('.rec-more').addClass('.rec-more-top');
+			S.all('.rec-history').animate({
+				height: {
+			        value: S.all('.rec-history ul').height()
+			    }
+			},{
+			    duration: 0.2,
+			    easing: 'easeOut'
+			})
+		}
+	})
+
+    //关闭弹框
+    S.all('.c-close').on("click",function(){
+        S.all('.c-show').hide();
+        S.all('.c-popup').hide();
+    })
+	S.all('.test-open li').each(function(item,i){
+		S.all(this).on('click',function(){
+			S.all('.c-show-pic').show();
+        	S.all('.c-popup').show();
+        	picSlide.go(i);
+		})
+	})
+
+	S.all('.all-info').on('click',function(){
+		S.all('.c-show-par').show();
+    	S.all('.c-popup').show();
+	})
+});
+</script>	
+</body>
+</html>
