@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="http://g.tbcdn.cn/??mui/global/1.2.39/global.css"/>
+<script src="http://g.tbcdn.cn/??kissy/k/1.4.1/seed-min.js,mui/seed/1.3.0/seed.js,mui/seed-g/1.0.48/seed.js,mui/btscfg-g/1.1.0/index.js,mui/bucket/1.2.1/index.js,mui/globalmodule/1.3.34/global-module.js,mui/global/1.2.39/global.js"></script>
+<style>
+.wd_page{ width: 100%; position: relative; overflow: hidden; font: 12px 'Microsoft Yahei';}
+.wd_page img{ display: block; border: 0;}
+.wd_brand{}
+.wd_brand .brand_box{ width: 990px; margin: 0 auto; overflow: hidden;}
+.wd_brand .brand_box ul{ width: 1000px; overflow: hidden;}
+.wd_brand .brand_box ul li{ width: 180px; height: 110px; float: left; position: relative; margin-right: 15px; margin-bottom: 10px; overflow: hidden;}
+.wd_brand .brand_box ul li img{ width: 100%; height: 100%;}
+.wd_brand .brand_box ul li .hover_img{ display: block; width: 180px; height: 110px; position: absolute; top: 110px; left: 0; z-index: 1;}
+.wd_brand .brand_box ul li .brand_like{ display: block; width: 100px; height: 24px; background: #f00; position: absolute; top: 0; left: 0; z-index: 2;}
+</style>
+</head>
+<body>
+<div class="wd_page">
+	<div class="wd_brand">
+		<div class="brand_box">
+			<ul>
+				<li>
+					<img src="http://gtms02.alicdn.com/tps/i2/TB1LpGJGpXXXXXTXVXXkdCEWVXX-495-300.jpg" alt="">
+					<span class="hover_img">
+						<img src="http://gtms02.alicdn.com/tps/i2/TB1HbvjGpXXXXXqXXXX8V8OVXXX-492-304.jpg" alt="">
+					</span>
+					<span class="brand_like">
+						<a class="like_btn" data-brandId="12" href="#">赞</a>
+						<em class="likenum likenum_12">1人已点赞</em>
+					</span>
+				</li>
+				<li>
+					<img src="http://gtms02.alicdn.com/tps/i2/TB1LpGJGpXXXXXTXVXXkdCEWVXX-495-300.jpg" alt="">
+					<span class="hover_img">
+						<img src="http://gtms02.alicdn.com/tps/i2/TB1HbvjGpXXXXXqXXXX8V8OVXXX-492-304.jpg" alt="">
+					</span>
+					<span class="brand_like">
+						<a class="like_btn" data-brandId="2" href="#">赞</a>
+						<em class="likenum likenum_2">1人已点赞</em>
+					</span>
+				</li>
+				<li>
+					<img src="http://gtms02.alicdn.com/tps/i2/TB1LpGJGpXXXXXTXVXXkdCEWVXX-495-300.jpg" alt="">
+					<span class="hover_img">
+						<img src="http://gtms02.alicdn.com/tps/i2/TB1HbvjGpXXXXXqXXXX8V8OVXXX-492-304.jpg" alt="">
+					</span>
+					<span class="brand_like">
+						<a class="like_btn" data-brandId="3" href="#">赞</a>
+						<em class="likenum likenum_3">1人已点赞</em>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+KISSY.use('node,ajax,mui/overlay/dialog,mui/minilogin,mui/overlay/alert',function(S,Node,ajax,Dialog,MLogin,Alert){
+	//信息提示框
+	var showAlert = function(tip){
+        var alertObj = new Alert({
+            tip: tip,
+            skin: 'red',
+            showCat: true
+        });
+        alertObj.render();
+        alertObj.show();
+    };
+	//初始化点赞人数
+    function changeData(){       
+    	S.IO({
+            dataType:'jsonp',
+            url:'http://chaoshi.daily.tmall.net/brandDisplay.do',
+            data:{
+                'buyerId':'1234'
+            },
+            jsonp:"callback",
+            success:function (data) {
+              	S.each(data.model.brandPraiseCountList,function(val,k){
+                    S.all('.likenum_'+val.brandId).html(val.brandPraiseCount+'人已点赞');   
+              	});
+            }
+        });
+    }
+    changeData();
+
+	S.all('.brand_box li').each(function(){
+		var _self = S.all(this);
+		_self.on('mouseenter',function(){
+			_self.all('.hover_img').stop().animate({
+            	'top':0
+        	},.5,'easeIn');
+		})
+		_self.on('mouseleave',function(){
+			_self.all('.hover_img').stop().animate({
+            	'top':'110px'
+        	},.5,'easeOut');
+		})
+		_self.all('.like_btn').on('click',function(e){
+			e.halt();
+			MLogin.show(function(){
+				var brandId = _self.all('.like_btn').attr('data-brandId');
+				S.IO({
+	                dataType:'jsonp',
+	                url:'http://chaoshi.daily.tmall.net/brandPraise.do',
+	                data:{
+	                	'buyerId':'1234',
+	                    'brandId':brandId
+	                },
+	                jsonp:"callback",
+	                success:function (data) {
+	                  	if(data.success == true){
+	                  		_self.all('.likenum ').html(data.model.brandPraiseDo.brandPraiseCount);
+	                  		if(data.model.hasQualified == true){
+	                  			showAlert('100000');
+	                  		}else{
+	                  			showAlert('恭喜你，点赞成功了。。。');
+	                  		}
+	                  	}else{
+	                  		showAlert(data.errorMessage);
+	                  	}
+	                }
+	            });
+			})
+		})
+	})
+})
+</script>
+</body>
+</html>
